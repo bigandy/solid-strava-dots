@@ -1,18 +1,51 @@
 import type { Component } from "solid-js";
-import { createSignal, Show } from "solid-js";
+import { createSignal, createEffect, onCleanup, Show } from "solid-js";
 
 import styles from "./App.module.css";
 
+import Thingulator from "./components/Thingulator";
 import Calendar from "./components/Calendar";
 
 const App: Component = () => {
   const [showCalendar, setShowCalendar] = createSignal(true);
+
+  let timerId: number;
+
+  onCleanup(() => window.clearInterval(timerId));
+
+  const [count, setCount] = createSignal(0);
+  const [running, setRunning] = createSignal(false);
+
+  createEffect(() => {
+    let intervalId: number;
+    if (running()) {
+      intervalId = setInterval(() => {
+        setCount((c) => c + 1);
+      }, 100);
+    }
+    onCleanup(() => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    });
+  });
+
+  const reset = () => {
+    setRunning(false);
+    setCount(0);
+  };
 
   return (
     <div class={styles.App}>
       <header class={styles.header}>
         <h1>Solid Strava Dots</h1>
       </header>
+
+      <button onClick={() => setRunning(true)}>Start</button>
+      <button onClick={() => setRunning(false)}>Stop</button>
+      <button onClick={reset}>Reset</button>
+
+      <Thingulator count={count} />
 
       <button onClick={() => setShowCalendar(!showCalendar())}>
         {showCalendar() ? "Hide" : "Show"} Calendar
