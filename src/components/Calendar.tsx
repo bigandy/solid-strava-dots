@@ -1,11 +1,4 @@
-import {
-  onCleanup,
-  onMount,
-  type Component,
-  For,
-  createSignal,
-  createEffect,
-} from "solid-js";
+import { type Component, For, createSignal } from "solid-js";
 import dayjs from "dayjs";
 
 import styles from "./Calendar.module.css";
@@ -24,7 +17,7 @@ const dayToNumericDay = (firstDayofMonth: string) => {
   return firstDayNumeric;
 };
 
-const getMonth = (offset = 0) => {
+const getMonth = (offset: number) => {
   const today = dayjs().add(offset, "month");
   const month = today.format("MMMM");
   const year = today.format("YYYY");
@@ -63,40 +56,48 @@ const indexToDay = (index: number) => {
   }
 };
 
-const Header = (props: {
-  offset: number;
-  setOffset: (offset: number) => void;
+const Header = ({
+  offset,
+  setOffset,
+  showOffset,
+}: {
+  offset: any;
+  setOffset: any;
+  showOffset: boolean;
 }) => {
-  const { month, year } = getMonth(props.offset);
+  const derivedGetMonthlyData = () => getMonth(offset());
 
   // wrap a span around each letter
-  const monthSpread = [...month].map((letter) => <span>{letter}</span>);
+  const monthSpread = () =>
+    [...derivedGetMonthlyData().month].map((letter) => <span>{letter}</span>);
 
   return (
     <header>
-      <h1 class={styles.calendarMonth}>{monthSpread}</h1>
-      <h2 class={styles.calendarYear}>{year}</h2>
+      <Show when={showOffset}>
+        <p>Offset: {offset()}</p>
+      </Show>
+      <h1 class={styles.calendarMonth}>{monthSpread()}</h1>
+      <h2 class={styles.calendarYear}>{derivedGetMonthlyData().year}</h2>
 
       <div>
-        <button onClick={() => props.setOffset(props.offset - 1)}>Prev</button>
-        <button onClick={() => props.setOffset(props.offset + 1)}>Next</button>
+        <button onClick={() => setOffset((o: number) => o - 1)}>Prev</button>
+        <button onClick={() => setOffset((o: number) => o + 1)}>Next</button>
       </div>
     </header>
   );
 };
 
 const Table: Component<{
-  offset: number;
+  offset: any;
   setOffset: (offset: number) => void;
-}> = (props) => {
-  const currentClass = props.offset === 0 ? styles.currentCalendar : "";
-
-  // Rows
-  // calculate number of rows.
+}> = ({ offset, setOffset }) => {
+  const currentClass = () => (offset() === 0 ? styles.currentCalendar : "");
 
   const rowsReturn = () => {
+    // Rows
+    // calculate number of rows.
     let dayCount = 0;
-    const { daysInMonth, firstDayofMonth, todayDay } = getMonth(props.offset);
+    const { daysInMonth, firstDayofMonth, todayDay } = getMonth(offset());
     let rows = Math.ceil((daysInMonth + firstDayofMonth) / 7);
 
     return (
@@ -136,8 +137,8 @@ const Table: Component<{
   };
 
   return (
-    <div class={`${styles.calendar} ${currentClass}`}>
-      <Header offset={props.offset} setOffset={props.setOffset} />
+    <div class={`${styles.calendar} ${currentClass()}`}>
+      <Header offset={offset} setOffset={setOffset} showOffset={false} />
       <table class="calendar_days">
         <thead>
           <tr>
@@ -180,12 +181,6 @@ const Table: Component<{
 const Calendar: Component<{ initialOffset?: number }> = ({
   initialOffset = 0,
 }) => {
-  //   onMount(() => {
-  //     console.log("Calendar onMount");
-  //   });
-
-  //   onCleanup(() => console.log("Calendar onCleanup"));
-
   const [offset, setOffset] = createSignal(initialOffset);
 
   return (
@@ -193,7 +188,7 @@ const Calendar: Component<{ initialOffset?: number }> = ({
       <h1>Calendar</h1>
 
       <div class={styles.wrapper}>
-        <Table offset={offset()} setOffset={setOffset} />
+        <Table offset={offset} setOffset={setOffset} />
       </div>
     </div>
   );
