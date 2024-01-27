@@ -1,7 +1,9 @@
 import { type Component, For, createSignal, Show } from "solid-js";
 import dayjs from "dayjs";
 
-import styles from "./Calendar.module.css";
+import Button from "../Button";
+
+import styles from "./styles.module.css";
 
 const dayToNumericDay = (firstDayofMonth: string) => {
   let firstDayNumeric = 0;
@@ -80,8 +82,17 @@ const Header = ({
       <h2 class={styles.calendarYear}>{derivedGetMonthlyData().year}</h2>
 
       <div>
-        <button onClick={() => setOffset((o: number) => o - 1)}>Prev</button>
-        <button onClick={() => setOffset((o: number) => o + 1)}>Next</button>
+        <Button primary onClick={() => setOffset((o: number) => o - 1)}>
+          Prev
+        </Button>
+
+        <Button secondary onClick={() => setOffset(0)} disabled={offset === 0}>
+          Now
+        </Button>
+
+        <Button primary onClick={() => setOffset((o: number) => o + 1)}>
+          Next
+        </Button>
       </div>
     </header>
   );
@@ -139,7 +150,7 @@ const Table: Component<{
   return (
     <div class={`${styles.calendar} ${currentClass()}`}>
       <Header offset={offset} setOffset={setOffset} showOffset={false} />
-      <table class="calendar_days">
+      <table>
         <thead>
           <tr>
             <th>
