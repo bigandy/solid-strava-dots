@@ -18,5 +18,8 @@
   "dependencies": {
     "dayjs": "1.11.10",
     "solid-js": "1.8.12"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.6"
   }
 }
