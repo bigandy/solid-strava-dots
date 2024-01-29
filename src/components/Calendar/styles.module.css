@@ -9,22 +9,36 @@
   overflow: auto;
   outline: solid 1px grey;
   outline-offset: 4px;
-}
 
-table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: separate;
-}
+  h1 {
+    margin-block-start: 0;
+  }
 
-th,
-td {
-  padding-left: 0;
-  text-align: left;
-}
+  th,
+  td {
+    padding-left: 0;
+    text-align: left;
+  }
 
-th {
-  padding-inline: 1rem;
+  td span {
+    padding: 1em;
+    display: inline-block;
+  }
+
+  th {
+    padding-inline: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+  }
+
+  button {
+    margin-block-end: 2rem;
+    margin-inline: 0.25rem;
+  }
 }
 
 .day {
@@ -66,11 +80,6 @@ th {
   background: var(--orange);
   color: white;
   border-radius: 50%;
-}
-
-td span {
-  padding: 1em;
-  display: inline-block;
 }
 
 .month-buttons {
@@ -171,9 +180,6 @@ header {
 
 @container (inline-size < 300px) {
   /* the narrow view */
-  table {
-    /* this has to be here which is weird!. Bug. */
-  }
 
   td:not(:empty) {
     display: block;
@@ -226,5 +232,39 @@ header {
   .dayName {
     all: unset;
     padding: 1em;
+  }
+}
+
+.showDots {
+  padding-block-end: 1em;
+
+  th,
+  td {
+    text-align: center;
+    width: calc(1 / 7 * 100%);
+  }
+
+  td {
+    position: relative;
+    padding: 2em;
+
+    &::after {
+      position: absolute;
+      translate: -10px 0;
+      left: 50%;
+      content: "";
+      display: block;
+      height: 20px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--dot-background, black);
+      border: 2px solid;
+      border-color: var(--dot-color, transparent);
+    }
+  }
+
+  .calendarDayActive {
+    --dot-color: red;
+    --dot-background: red;
   }
 }
