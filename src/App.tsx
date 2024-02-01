@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import styles from "./App.module.css";
 
 import Calendar from "./components/Calendar";
+import CalendarWithData from "./components/CalendarWithData";
 
 const now = dayjs();
 const dummyData = {
@@ -25,13 +26,7 @@ const App: Component = () => {
 
       <h2>Calendar with dots</h2>
 
-      <Calendar showDots />
-
-      {/* <Calendar initialOffset={-2} />
-      <Calendar initialOffset={-1} />
-      <Calendar initialOffset={1} />
-
-      <Calendar initialOffset={2} /> */}
+      <CalendarWithData data={dummyData} />
     </div>
   );
 };

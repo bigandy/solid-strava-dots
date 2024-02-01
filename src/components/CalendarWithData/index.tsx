@@ -1,18 +1,22 @@
 import { type Component, For, createSignal } from "solid-js";
 
-import styles from "./styles.module.css";
+import styles from "../Calendar/styles.module.css";
 
-import { getMonth, indexToDay } from "./utils";
-
-import { Header } from "./Header";
-import { TableHeader } from "./TableHeader";
+import { getMonth, indexToDay } from "../Calendar/utils";
+import { Header } from "../Calendar/Header";
+import { TableHeader } from "../Calendar/TableHeader";
 
 interface Props {
   initialOffset?: number;
   showDots?: boolean;
+  data?: any; // TODO: type this
 }
 
-const Calendar: Component<Props> = ({ initialOffset = 0, showDots }) => {
+const CalendarWithData: Component<Props> = ({
+  initialOffset = 0,
+  showDots,
+  data,
+}) => {
   const [offset, setOffset] = createSignal(initialOffset);
 
   const rowsReturn = () => {
@@ -83,4 +87,4 @@ const Calendar: Component<Props> = ({ initialOffset = 0, showDots }) => {
   );
 };
 
-export default Calendar;
+export default CalendarWithData;
