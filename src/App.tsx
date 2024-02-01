@@ -2,10 +2,10 @@ import type { Component } from "solid-js";
 
 import dayjs from "dayjs";
 
-import styles from "./App.module.css";
+import styles from "App.module.css";
 
-import Calendar from "./components/Calendar";
-import CalendarWithData from "./components/CalendarWithData";
+import Calendar from "components/Calendar";
+import CalendarWithData from "components/CalendarWithData";
 
 const now = dayjs();
 const dummyData = {
