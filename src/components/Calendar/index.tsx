@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 import { Header } from "./Header";
 import { TableHeader } from "./TableHeader";
-import { TableBody } from "./TableBody";
+import { TableBody } from "./TableBodyv2";
 
 interface Props {
   initialOffset?: number;
