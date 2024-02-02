@@ -1,3 +1,5 @@
+import type { Component } from "solid-js";
+
 import styles from "./styles.module.css";
 
 export const TableHeader: Component = () => {
@@ -5,31 +7,31 @@ export const TableHeader: Component = () => {
     <thead>
       <tr>
         <th>
-          m<span class={styles.medium}>on</span>
+          M<span class={styles.medium}>on</span>
           <span class={styles.long}>day</span>
         </th>
         <th>
-          tu<span class={styles.medium}>e</span>
+          Tu<span class={styles.medium}>e</span>
           <span class={styles.long}>sday</span>
         </th>
         <th>
-          w<span class={styles.medium}>ed</span>
+          W<span class={styles.medium}>ed</span>
           <span class={styles.long}>nesday</span>
         </th>
         <th>
-          th<span class={styles.medium}>u</span>
+          Th<span class={styles.medium}>u</span>
           <span class={styles.long}>rsday</span>
         </th>
         <th>
-          f<span class={styles.medium}>ri</span>
+          F<span class={styles.medium}>ri</span>
           <span class={styles.long}>day</span>
         </th>
         <th>
-          sa<span class={styles.medium}>t</span>
+          Sa<span class={styles.medium}>t</span>
           <span class={styles.long}>urday</span>
         </th>
         <th>
-          su<span class={styles.medium}>n</span>
+          Su<span class={styles.medium}>n</span>
           <span class={styles.long}>day</span>
         </th>
       </tr>
