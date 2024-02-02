@@ -1,11 +1,11 @@
-import { type Component, For } from "solid-js";
+import { type Component, For, Accessor } from "solid-js";
 
 import styles from "./styles.module.css";
 
 import { getMonth, indexToDay } from "./utils";
 
 interface Props {
-  offset: any;
+  offset: Accessor<number>;
   showDots?: boolean;
 }
 

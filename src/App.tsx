@@ -24,9 +24,9 @@ const App: Component = () => {
       <h2>Regular Calendar with no data</h2>
       <Calendar />
 
-      <h2>Calendar with dots</h2>
+      {/* <h2>Calendar with dots</h2>
 
-      <CalendarWithData data={dummyData} />
+      <CalendarWithData data={dummyData} /> */}
     </div>
   );
 };
