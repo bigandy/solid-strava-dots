@@ -10,6 +10,13 @@
   outline: solid 1px grey;
   outline-offset: 4px;
 
+  scrollbar-color: var(--orange) black;
+  scrollbar-width: thin;
+
+  td:not([class]) span {
+    display: none;
+  }
+
   h1 {
     margin-block-start: 0;
   }
@@ -38,10 +45,6 @@
   button {
     margin-block-end: 2rem;
     margin-inline: 0.25rem;
-  }
-
-  td:has(.dayCount:empty) {
-    display: none;
   }
 }
 
@@ -148,10 +151,6 @@ header {
     vertical-align: middle;
   }
 
-  td:not(:empty) {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
   .calendarMonth span:nth-child(3) ~ span {
     display: inline;
   }
@@ -184,8 +183,11 @@ header {
 
 @container (inline-size < 300px) {
   /* the narrow view */
+  td {
+    display: none;
+  }
 
-  td:not(:empty) {
+  .calendarDay {
     display: block;
     border-bottom: 1px solid black;
     width: 100%;

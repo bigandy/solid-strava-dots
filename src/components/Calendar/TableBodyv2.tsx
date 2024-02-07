@@ -26,12 +26,15 @@ export const TableBody: Component<Props> = ({ offset, showDots }) => {
               const dayNumber = () =>
                 rowIndex * 7 + 1 * (columnIndex + 1) - firstDayofMonth() + 1;
 
+              const isCalendarDay =
+                dayNumber() < daysInMonth() + 1 && dayNumber() > 0;
+              const isToday = dayNumber() > 0 && dayNumber() === todayDay();
+
               return (
                 <td
                   classList={{
-                    [styles.calendarDay]: true,
-                    [styles.calendarDayActive]:
-                      dayNumber() > 0 && dayNumber() === todayDay(),
+                    [styles.calendarDay]: isCalendarDay,
+                    [styles.calendarDayActive]: isToday,
                   }}
                 >
                   <span class={`${styles.dayName} vh`}>
@@ -43,8 +46,7 @@ export const TableBody: Component<Props> = ({ offset, showDots }) => {
                       vh: showDots,
                     }}
                   >
-                    {dayNumber() < 1 ||
-                      (dayNumber() < daysInMonth() + 1 && dayNumber())}
+                    {isCalendarDay && dayNumber()}
                   </span>
                 </td>
               );
