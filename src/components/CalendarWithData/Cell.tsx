@@ -3,6 +3,7 @@ import { Component } from "solid-js";
 import { indexToDay } from "../Calendar/utils";
 
 import styles from "../Calendar/styles.module.css";
+import { DotWithPopover } from "../DotWithPopover";
 
 interface Props {
     number: number;
@@ -23,16 +24,9 @@ export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
             {dots && dots.length > 0 && (
                 <div class="dots">
                     {dots.map((dot) => {
+                        console.log({ dot })
                         return (
-                            <>
-                                <div class={styles.dot}></div>
-                                <div popover>
-                                    <h2>{dot.information.title}</h2>
-                                    <p>{dot.information.content}</p>
-                                    <a href={dot.information.link}>LINK TEXT</a>
-                                </div>
-
-                            </>
+                            <DotWithPopover title={dot.information.title} content={dot.information.content} link={dot.information.link} />
                         )
                     })}
                 </div>

@@ -8,6 +8,7 @@ import styles from "./App.module.css";
 
 import Calendar from "./components/Calendar";
 import CalendarWithData from "./components/CalendarWithData";
+import { DotWithPopover } from "./components/DotWithPopover";
 
 const now = dayjs();
 
@@ -65,6 +66,16 @@ const App: Component = () => {
       <h2>Calendar with Data</h2>
 
       <CalendarWithData data={dummyData} />
+
+      <div style={{
+        'margin-top': '3rem',
+        "margin-bottom": '20em',
+        border: '1px solid white',
+        padding: '2rem',
+        "text-align": 'left'
+      }}>
+        <DotWithPopover />
+      </div>
     </div>
   );
 };
