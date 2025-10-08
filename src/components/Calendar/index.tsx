@@ -11,22 +11,22 @@ interface Props {
   showDots?: boolean;
 }
 
-const Calendar: Component<Props> = (props) => {
-  const [offset, setOffset] = createSignal(props.initialOffset ?? 0);
+const Calendar: Component<Props> = ({ showDots, initialOffset }) => {
+  const [offset, setOffset] = createSignal(initialOffset ?? 0);
 
   return (
     <div class={styles.wrapper}>
       <div
         classList={{
           [styles.calendar]: true,
-          [styles.showDots]: props.showDots,
+          [styles.showDots]: showDots,
           [styles.currentCalendar]: offset() === 0,
         }}
       >
-        <Header offset={offset} setOffset={setOffset} showOffset={false} />
+        <Header offset={offset} setOffset={setOffset} />
         <table>
           <TableHeader />
-          <TableBody offset={offset} showDots={props.showDots} />
+          <TableBody offset={offset} showDots={showDots} />
         </table>
       </div>
     </div>

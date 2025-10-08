@@ -68,7 +68,7 @@
   margin-bottom: 0;
 }
 
-.calendarMonth span:nth-child(3) ~ span {
+.calendarMonth span:nth-child(3)~span {
   display: none;
 }
 
@@ -151,12 +151,13 @@ header {
     vertical-align: middle;
   }
 
-  .calendarMonth span:nth-child(3) ~ span {
+  .calendarMonth span:nth-child(3)~span {
     display: inline;
   }
 }
 
 @container (inline-size > 1000px) {
+
   .year-buttons,
   .long {
     display: inline-block;
@@ -166,22 +167,21 @@ header {
 @container (inline-size > 1600px) {
   .day:hover {
     color: white;
-    background-image: linear-gradient(
-      45deg,
-      #000000 16.67%,
-      #ffffff 16.67%,
-      #ffffff 50%,
-      #000000 50%,
-      #000000 66.67%,
-      #ffffff 66.67%,
-      #ffffff 100%
-    );
+    background-image: linear-gradient(45deg,
+        #000000 16.67%,
+        #ffffff 16.67%,
+        #ffffff 50%,
+        #000000 50%,
+        #000000 66.67%,
+        #ffffff 66.67%,
+        #ffffff 100%);
     background-size: 10px 10px;
     text-shadow: 0 0 3px #000000;
   }
 }
 
 @container (inline-size < 300px) {
+
   /* the narrow view */
   td {
     display: none;
@@ -273,4 +273,19 @@ header {
     --dot-color: red;
     --dot-background: red;
   }
+}
+
+.dots {
+  position: absolute;
+  bottom: 0;
+
+}
+
+.dot {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  height: 10px;
+  width: 10px;
+  background: red;
+  display: inline-block;
 }
