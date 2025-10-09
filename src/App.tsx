@@ -74,7 +74,7 @@ const App: Component = () => {
 
       <CalendarWithData data={dummyData} />
 
-      <h2>Dot With Popover</h2>
+      <h2>Dots</h2>
       <div style={{
         'margin-top': '3rem',
         "margin-bottom": '20em',
@@ -82,10 +82,12 @@ const App: Component = () => {
         padding: '2rem',
         "text-align": 'left',
       }}>
+        <h3>With Popover</h3>
         <DotWithPopover />
         <DotWithPopover />
         <DotWithPopover />
 
+        <h3>No Popover</h3>
         <Dot />
         <Dot />
         <Dot />

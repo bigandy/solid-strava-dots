@@ -26,10 +26,16 @@
     padding-left: 0;
   }
 
+
   td {
-    text-align: center;
     border: 1px solid white;
+    text-align: center;
     position: relative;
+  }
+
+
+  td:empty {
+    border: none;
   }
 
 
@@ -143,17 +149,17 @@ header {
   cursor: pointer;
 }
 
-@container (inline-size > 400px) {
+th {
+  padding-block-end: 1rem;
+}
+
+@container (inline-size > 500px) {
   .medium {
     display: inline-block;
   }
 
   .month-buttons {
     display: block;
-  }
-
-  th {
-    padding-block-end: 1rem;
   }
 
   th,
@@ -191,17 +197,12 @@ header {
   }
 }
 
-@container (inline-size < 300px) {
+@container (inline-size < 400px) {
 
   /* the narrow view */
   td {
     display: none;
-  }
-
-  .calendarDay {
-    display: block;
-    border-bottom: 1px solid black;
-    width: 100%;
+    text-align: left;
   }
 
   th {
@@ -230,8 +231,10 @@ header {
 
   .calendarDay {
     display: grid;
-    grid-template-columns: 5fr 5fr;
+    grid-template-columns: 1fr 1fr;
   }
+
+
 
   tr:nth-child(1) .calendarDay:nth-child(1) {
     border-top: 1px solid black;
@@ -242,8 +245,14 @@ header {
     color: inherit;
   }
 
+
+
   .dayCount {
     text-align: right;
+  }
+
+  .wrapper td {
+    text-align: left;
   }
 
   .dayName {
@@ -253,7 +262,12 @@ header {
 }
 
 .dots {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: none;
+
+  @container (inline-size > 500px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
