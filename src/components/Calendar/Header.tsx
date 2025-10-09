@@ -19,12 +19,11 @@ export const Header: Component<Props> = ({ offset, setOffset }) => {
 
   return (
     <header>
-
-      <h1 class={styles.calendarMonth}>{derivedGetMonthlyData().month}</h1>
+      <h1 class={styles.calendarMonth}>{monthsWrappedInSpans()}</h1>
       <h2 class={styles.calendarYear}>{derivedGetMonthlyData().year}</h2>
 
       <div>
-        <Button primary onClick={() => setOffset((o: number) => o - 1)}>
+        <Button primary onClick={() => setOffset((o) => o - 1)}>
           Prev
         </Button>
 
@@ -36,7 +35,7 @@ export const Header: Component<Props> = ({ offset, setOffset }) => {
           Now
         </Button>
 
-        <Button primary onClick={() => setOffset((o: number) => o + 1)}>
+        <Button primary onClick={() => setOffset((o) => o + 1)}>
           Next
         </Button>
       </div>

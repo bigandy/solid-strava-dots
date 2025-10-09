@@ -58,3 +58,35 @@ export const indexToDay = (index: number) => {
       return "no day";
   }
 };
+
+
+export const getMonthDays = (offset) => {
+  const derivedMonth = getMonth(offset);
+
+  const { month, daysInMonth, year, firstDayofMonth, todayDay } = derivedMonth;
+
+  const items = Math.ceil((daysInMonth + firstDayofMonth) / 7)
+
+  let count = 0;
+  const dates = [...new Array(items)].map((_, rowIndex) => {
+
+    const days = [...new Array(7).fill('x')].map((_, cellIndex) => {
+      if ((rowIndex === 0 && (cellIndex + 1) < firstDayofMonth) || (count > daysInMonth - 1)) {
+        return null;
+      } else {
+        count++;
+
+        return {
+          number: count,
+          date: getDMY(dayjs(`${count}-${month}-${year}`)),
+          activeDay: count === todayDay
+        };
+      }
+    }
+    );
+
+    return days;
+  })
+
+  return dates;
+};

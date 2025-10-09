@@ -6,20 +6,25 @@ import styles from "../Calendar/styles.module.css";
 import { DotWithPopover } from "../DotWithPopover";
 import { Dot } from "../Dot";
 
-interface Props {
+
+interface CellProps {
     number: number;
     activeDay: boolean;
+    index: number;
+}
+
+interface CellWithDotsProps extends CellProps {
     dots: any[];
 }
 
-export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
+export const CellWithDots: Component<CellWithDotsProps> = ({ number, activeDay, dots, index }) => {
     return (
         <td classList={{
             [styles.calendarDay]: true,
             [styles.calendarDayActive]: activeDay,
         }}>
             <span class={`${styles.dayName} vh`}>
-                {indexToDay(number)}
+                {indexToDay(index)}
             </span>
 
             {dots && dots.length > 0 && (
@@ -31,8 +36,7 @@ export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
                             )
                         } else {
                             return (
-                                <>
-                                    <Dot /></>
+                                <Dot />
                             )
                         }
 
@@ -40,6 +44,27 @@ export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
                     )}
                 </div>
             )}
+
+            <span
+                classList={{
+                    [styles.dayCount]: true,
+                }}
+            >
+                {number}
+            </span>
+        </td>
+    )
+}
+
+export const Cell: Component<CellProps> = ({ number, activeDay, index }) => {
+    return (
+        <td classList={{
+            [styles.calendarDay]: true,
+            [styles.calendarDayActive]: activeDay,
+        }}>
+            <span class={`${styles.dayName} vh`}>
+                {indexToDay(index)}
+            </span>
 
             <span
                 classList={{
