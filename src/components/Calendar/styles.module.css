@@ -24,10 +24,16 @@
   th,
   td {
     padding-left: 0;
-    text-align: left;
   }
 
-  td span {
+  td {
+    text-align: center;
+    border: 1px solid white;
+    position: relative;
+  }
+
+
+  td span:not(.vh) {
     padding: 1em;
     display: inline-block;
   }
@@ -42,7 +48,7 @@
     border-collapse: separate;
   }
 
-  button {
+  button:not(*:global(.dot)) {
     margin-block-end: 2rem;
     margin-inline: 0.25rem;
   }
@@ -80,7 +86,12 @@
 }
 
 .calendarDayActive {
-  color: var(--orange);
+  background-color: var(--orange);
+  color: white;
+
+  --dot-background: white;
+  --dot-background-hover: grey;
+  --dot-border: var(--orange);
 }
 
 .calendarDayActive .dayCount {
@@ -241,42 +252,8 @@ header {
   }
 }
 
-.showDots {
-  padding-block-end: 1em;
-
-  th,
-  td {
-    text-align: center;
-    width: calc(1 / 7 * 100%);
-  }
-
-  td {
-    position: relative;
-    padding: 2em;
-
-    &::after {
-      position: absolute;
-      translate: -10px 0;
-      left: 50%;
-      content: "";
-      display: block;
-      height: 20px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: var(--dot-background, black);
-      border: 2px solid;
-      border-color: var(--dot-color, transparent);
-    }
-  }
-
-  .calendarDayActive {
-    --dot-color: red;
-    --dot-background: red;
-  }
-}
-
 .dots {
   position: absolute;
-  bottom: 0;
-
+  top: 0;
+  left: 0;
 }

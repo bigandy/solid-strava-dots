@@ -8,10 +8,9 @@ import { TableBody } from "./TableBodyv2";
 
 interface Props {
   initialOffset?: number;
-  showDots?: boolean;
 }
 
-const Calendar: Component<Props> = ({ showDots, initialOffset }) => {
+const Calendar: Component<Props> = ({ initialOffset }) => {
   const [offset, setOffset] = createSignal(initialOffset ?? 0);
 
   return (
@@ -19,14 +18,13 @@ const Calendar: Component<Props> = ({ showDots, initialOffset }) => {
       <div
         classList={{
           [styles.calendar]: true,
-          [styles.showDots]: showDots,
           [styles.currentCalendar]: offset() === 0,
         }}
       >
         <Header offset={offset} setOffset={setOffset} />
         <table>
           <TableHeader />
-          <TableBody offset={offset} showDots={showDots} />
+          <TableBody offset={offset} />
         </table>
       </div>
     </div>

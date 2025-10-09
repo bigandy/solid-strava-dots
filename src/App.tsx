@@ -72,8 +72,10 @@ const App: Component = () => {
         "margin-bottom": '20em',
         border: '1px solid white',
         padding: '2rem',
-        "text-align": 'left'
+        "text-align": 'left',
       }}>
+        <DotWithPopover />
+        <DotWithPopover />
         <DotWithPopover />
       </div>
     </div>

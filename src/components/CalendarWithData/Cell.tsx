@@ -22,13 +22,11 @@ export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
             </span>
 
             {dots && dots.length > 0 && (
-                <div class="dots">
-                    {dots.map((dot) => {
-                        console.log({ dot })
-                        return (
-                            <DotWithPopover title={dot.information.title} content={dot.information.content} link={dot.information.link} />
-                        )
-                    })}
+                <div class={styles.dots}>
+                    {dots.map((dot) => (
+                        <DotWithPopover title={dot.information.title} content={dot.information.content} link={dot.information.link} />
+                    )
+                    )}
                 </div>
             )}
 

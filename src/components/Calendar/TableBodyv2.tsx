@@ -6,11 +6,10 @@ import { getMonth, indexToDay } from "./utils";
 
 interface Props {
   offset: Accessor<number>;
-  showDots?: boolean;
 }
 
 // Want to re-rende it all when the offset changes.
-export const TableBody: Component<Props> = ({ offset, showDots }) => {
+export const TableBody: Component<Props> = ({ offset }) => {
   const derivedGetMonth = () => getMonth(offset());
   const daysInMonth = () => derivedGetMonth().daysInMonth;
   const firstDayofMonth = () => derivedGetMonth().firstDayofMonth;
@@ -43,7 +42,6 @@ export const TableBody: Component<Props> = ({ offset, showDots }) => {
                   <span
                     classList={{
                       [styles.dayCount]: true,
-                      vh: showDots,
                     }}
                   >
                     {isCalendarDay && dayNumber()}

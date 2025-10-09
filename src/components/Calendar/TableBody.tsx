@@ -6,10 +6,9 @@ import { getMonth, indexToDay } from "./utils";
 
 interface Props {
   offset: Accessor<number>;
-  showDots?: boolean;
 }
 
-export const TableBody: Component<Props> = ({ offset, showDots }) => {
+export const TableBody: Component<Props> = ({ offset }) => {
   const rowsReturn = () => {
     let dayCount = 0;
     const { daysInMonth, firstDayofMonth, todayDay } = getMonth(offset());
@@ -41,7 +40,6 @@ export const TableBody: Component<Props> = ({ offset, showDots }) => {
                       <span
                         classList={{
                           [styles.dayCount]: true,
-                          vh: showDots,
                         }}
                       >
                         {dayCount}

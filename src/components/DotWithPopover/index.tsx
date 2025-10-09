@@ -11,7 +11,7 @@ export const DotWithPopover = ({ title = "Popover Title", content = `Popover con
             style={{
                 '--anchor-name': `ank-${id}`
             }}>
-            <button popoverTarget={id} class={styles.dot} >
+            <button popoverTarget={id} class={`${styles.dot} dot`} >
                 <span class="vh">Open popoover</span>
             </button>
             <div popover class={styles.popover} id={id}>
