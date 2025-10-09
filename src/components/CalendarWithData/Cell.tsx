@@ -4,6 +4,7 @@ import { indexToDay } from "../Calendar/utils";
 
 import styles from "../Calendar/styles.module.css";
 import { DotWithPopover } from "../DotWithPopover";
+import { Dot } from "../Dot";
 
 interface Props {
     number: number;
@@ -23,9 +24,19 @@ export const Cell: Component<Props> = ({ number, activeDay, dots }) => {
 
             {dots && dots.length > 0 && (
                 <div class={styles.dots}>
-                    {dots.map((dot) => (
-                        <DotWithPopover title={dot.information.title} content={dot.information.content} link={dot.information.link} />
-                    )
+                    {dots.map((dot) => {
+                        if (dot.information) {
+                            return (
+                                <DotWithPopover title={dot.information.title} content={dot.information.content} link={dot.information.link} />
+                            )
+                        } else {
+                            return (
+                                <>
+                                    <Dot /></>
+                            )
+                        }
+
+                    }
                     )}
                 </div>
             )}

@@ -9,6 +9,7 @@ import styles from "./App.module.css";
 import Calendar from "./components/Calendar";
 import CalendarWithData from "./components/CalendarWithData";
 import { DotWithPopover } from "./components/DotWithPopover";
+import { Dot } from "./components/Dot";
 
 const now = dayjs();
 
@@ -51,6 +52,12 @@ const dummyData = [
     date: getDMY(now.add(3, "month")),
     information: dummyInformation
   },
+  {
+    date: getDMY(now),
+  },
+  {
+    date: getDMY(now),
+  },
 ];
 
 const App: Component = () => {
@@ -77,6 +84,10 @@ const App: Component = () => {
         <DotWithPopover />
         <DotWithPopover />
         <DotWithPopover />
+
+        <Dot />
+        <Dot />
+        <Dot />
       </div>
     </div>
   );

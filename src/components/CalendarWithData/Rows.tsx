@@ -15,6 +15,8 @@ interface Props {
 export const Rows: Component<Props> = (props) => {
     const derivedMonth = () => getMonth(props.offset());
 
+    console.log(props.data)
+
     const monthDays = () => {
         const items = Math.ceil((derivedMonth().daysInMonth + derivedMonth().firstDayofMonth) / 7)
 

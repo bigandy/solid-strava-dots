@@ -1,8 +1,14 @@
-import { createUniqueId } from "solid-js";
+import { type Component, createUniqueId } from "solid-js";
 
 import styles from "./styles.module.css";
 
-export const DotWithPopover = ({ title = "Popover Title", content = `Popover content
+interface Props {
+    title?: string;
+    content?: string;
+    link?: string;
+}
+
+export const DotWithPopover: Component<Props> = ({ title = "Popover Title", content = `Popover content
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem aspernatur labore veritatis ex doloremque, aperiam porro soluta. Optio libero aliquid repellat atque neque in, error, natus corporis vel fuga nam?`, link = 'https://google.com' }) => {
     const id = createUniqueId();
 
@@ -11,9 +17,7 @@ export const DotWithPopover = ({ title = "Popover Title", content = `Popover con
             style={{
                 '--anchor-name': `ank-${id}`
             }}>
-            <button popoverTarget={id} class={`${styles.dot} dot`} >
-                <span class="vh">Open popoover</span>
-            </button>
+            <button popoverTarget={id} class={`${styles.dot} dot`} ></button>
             <div popover class={styles.popover} id={id}>
                 <button popoverTarget={id}>x
                     <div class="vh">close</div>
