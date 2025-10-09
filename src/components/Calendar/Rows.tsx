@@ -10,10 +10,10 @@ interface Props {
 
 
 export const Rows: Component<Props> = (props) => {
-  const monthDays = () => getMonthDays(props.offset());
+  const rows = () => getMonthDays(props.offset());
 
   return (
-    <For each={monthDays()}>
+    <For each={rows()}>
       {(row) => (
         <tr>
           <For each={row}>
