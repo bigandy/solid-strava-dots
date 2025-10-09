@@ -22,6 +22,10 @@ export const Header: Component<Props> = ({ offset, setOffset }) => {
       <h1 class={styles.calendarMonth}>{monthsWrappedInSpans()}</h1>
       <h2 class={styles.calendarYear}>{derivedGetMonthlyData().year}</h2>
 
+      <Button onClick={() => setOffset(o => o - 12)}>&lt;&lt; <span class="vh">previous year</span></Button>
+
+      <Button onClick={() => setOffset(o => o + 12)}>&gt;&gt; <span class="vh">next year</span></Button>
+
       <div>
         <Button primary onClick={() => setOffset((o) => o - 1)}>
           Prev
@@ -39,6 +43,6 @@ export const Header: Component<Props> = ({ offset, setOffset }) => {
           Next
         </Button>
       </div>
-    </header>
+    </header >
   );
 };
