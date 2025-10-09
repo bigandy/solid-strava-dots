@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { type Dayjs } from "dayjs";
 
 const dayToNumericDay = (firstDayofMonth: string) => {
   let firstDayNumeric = 0;
@@ -13,6 +13,7 @@ const dayToNumericDay = (firstDayofMonth: string) => {
 
   return firstDayNumeric;
 };
+
 
 export const getMonth = (offset: number) => {
   const today = dayjs().add(offset, "month");
@@ -32,10 +33,10 @@ export const getMonth = (offset: number) => {
   };
 };
 
+
 export const getDMY = (date: Dayjs) => {
   return date.format('DD-MM-YYYY');
 }
-
 
 
 export const indexToDay = (index: number) => {
@@ -60,7 +61,7 @@ export const indexToDay = (index: number) => {
 };
 
 
-export const getMonthDays = (offset) => {
+export const getMonthDays = (offset: number) => {
   const derivedMonth = getMonth(offset);
 
   const { month, daysInMonth, year, firstDayofMonth, todayDay } = derivedMonth;

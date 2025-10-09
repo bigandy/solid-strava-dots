@@ -1,6 +1,6 @@
 import { Accessor, type Component, For } from "solid-js";
 
-import { getMonthDays, getMonth } from "./utils";
+import { getMonthDays } from "./utils";
 
 import { Cell } from '../CalendarWithData/Cell';
 
