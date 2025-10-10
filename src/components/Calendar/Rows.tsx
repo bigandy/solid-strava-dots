@@ -1,39 +1,35 @@
-import { Accessor, type Component, For } from "solid-js";
-
+import { type Accessor, type Component, For } from "solid-js";
+import { Cell } from "../CalendarWithData/Cell";
 import { getMonthDays } from "./utils";
 
-import { Cell } from '../CalendarWithData/Cell';
-
 interface Props {
-  offset: Accessor<number>;
+	offset: Accessor<number>;
 }
 
-
 export const Rows: Component<Props> = (props) => {
-  const rows = () => getMonthDays(props.offset());
+	const rows = () => getMonthDays(props.offset());
 
-  return (
-    <For each={rows()}>
-      {(row) => (
-        <tr>
-          <For each={row}>
-            {(cell, cellIndex) => {
-              if (!cell) {
-                return (<td />)
-              }
+	return (
+		<For each={rows()}>
+			{(row) => (
+				<tr>
+					<For each={row}>
+						{(cell, cellIndex) => {
+							if (!cell) {
+								return <td />;
+							}
 
-              return (
-                <Cell
-                  number={cell.number}
-                  activeDay={cell.activeDay}
-                  index={cellIndex() + 1}
-                />
-              )
-            }}
-          </For>
-        </tr>
-      )}
-    </For>
-  );
+							return (
+								<Cell
+									number={cell.number}
+									activeDay={cell.activeDay}
+									index={cellIndex() + 1}
+								/>
+							);
+						}}
+					</For>
+				</tr>
+			)}
+		</For>
+	);
 };
-

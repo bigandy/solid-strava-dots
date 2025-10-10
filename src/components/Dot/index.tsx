@@ -1,7 +1,5 @@
-import styles from '../DotWithPopover/styles.module.css'
+import styles from "../DotWithPopover/styles.module.css";
 
 export const Dot = () => {
-    return (
-        <button class={`${styles.dot} ${styles.singleDot} dot`}></button>
-    )
-}
+	return <button class={`${styles.dot} ${styles.singleDot} dot`}></button>;
+};
